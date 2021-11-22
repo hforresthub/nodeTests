@@ -23,11 +23,16 @@ const express = require('express')
 const { Server } = require('http')
 const app = express()
 
+require('dotenv').config()
+
+const userID = process.env.USER_ID
+const userKey = process.env.USER_KEY
+
 app.get('/', (req, res) => {
-	res.send('Hi!')
+	res.send('Hi ' + userID)
 })
 
-app.listen(3000, () => console.log('server read'))
+app.listen(3000, () => console.log('server read by ' + userID))
 
 process.on('SIGTERM', () => {
 	Server.close(() => {
