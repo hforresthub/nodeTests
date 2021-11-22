@@ -40,6 +40,10 @@ process.on('SIGTERM', () => {
 	})
 })
 
+process.argv.slice(2).forEach((element, index) => {
+	const [key, val] = element.split('=')
+	console.log(`${key}: ${val}`);
+})
 
 setTimeout(() => {
 	console.log('This process is your pid ' + process.pid);
