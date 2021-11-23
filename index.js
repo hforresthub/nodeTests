@@ -63,6 +63,20 @@ getInput.question(`Where is up?`, direction => {
 	getInput.close()
 })
 
+const inquirer = require('inquirer')
+
+let questions = [
+	{
+		type: 'input',
+		name: 'name',
+		message: "Whats ya name?"
+	}
+]
+
+inquirer.prompt(questions).then(answers => {
+	console.log(`Hi ${answers['name']}!`);
+})
+
 
 process.on('SIGTERM', () => {
 	Server.close(() => {
