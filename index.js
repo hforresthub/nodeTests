@@ -50,6 +50,18 @@ const timer = setInterval(() => {
 	}
 }, 100)
 
+const getInput = require('readline').createInterface({
+	input: process.stdin,
+	output: process.stdout
+})
+
+getInput.question(`Where is up?`, direction => {
+	console.log(`Hi, is ${direction} also up?`);
+	if (direction === "esc") {
+		process.kill(process.pid, 'SIGTERM')
+	}
+	getInput.close()
+})
 
 
 process.on('SIGTERM', () => {
@@ -66,4 +78,4 @@ process.argv.slice(2).forEach((element, index) => {
 setTimeout(() => {
 	console.log('This process is your pid ' + process.pid);
 	process.kill(process.pid, 'SIGTERM')
-}, 5000)
+}, 15000)
