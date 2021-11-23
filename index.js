@@ -19,8 +19,9 @@
 
 // process.exitCode = 1
 
-const express = require('express')
 const { Server } = require('http')
+
+const express = require('express')
 const app = express()
 
 require('dotenv').config()
@@ -33,6 +34,12 @@ app.get('/', (req, res) => {
 })
 
 app.listen(3000, () => console.log('server read by ' + userID))
+
+console.log('\x1b[33m%s\x1b[0m', 'hi!')
+
+const chalk = require('chalk')
+console.log(chalk.blue('hello!'))
+
 
 process.on('SIGTERM', () => {
 	Server.close(() => {
