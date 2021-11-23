@@ -40,6 +40,17 @@ console.log('\x1b[33m%s\x1b[0m', 'hi!')
 const chalk = require('chalk')
 console.log(chalk.blue('hello!'))
 
+const ProgressBar = require('progress')
+
+const bar = new ProgressBar(':bar', { total: 20 })
+const timer = setInterval(() => {
+	bar.tick()
+	if (bar.complete) {
+		clearInterval(timer)
+	}
+}, 100)
+
+
 
 process.on('SIGTERM', () => {
 	Server.close(() => {
@@ -55,4 +66,4 @@ process.argv.slice(2).forEach((element, index) => {
 setTimeout(() => {
 	console.log('This process is your pid ' + process.pid);
 	process.kill(process.pid, 'SIGTERM')
-}, 3000)
+}, 5000)
