@@ -30,7 +30,8 @@ const userID = process.env.USER_ID
 const userKey = process.env.USER_KEY
 
 app.get('/', (req, res) => {
-	res.send('Hi ' + userID)
+	res.send('Hi ' + userID + " more")
+	// res.send('Hi  person')
 })
 
 app.listen(3000, () => console.log('server read by ' + userID))
@@ -91,5 +92,5 @@ process.argv.slice(2).forEach((element, index) => {
 
 setTimeout(() => {
 	console.log('This process is your pid ' + process.pid);
-	process.kill(process.pid, 'SIGTERM')
+	// process.kill(process.pid, 'SIGTERM')
 }, 15000)
